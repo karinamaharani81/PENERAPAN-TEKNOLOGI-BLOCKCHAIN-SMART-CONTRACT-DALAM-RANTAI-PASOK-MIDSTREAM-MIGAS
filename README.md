@@ -76,23 +76,29 @@ Akses browser ke: http://localhost:6969
 ### Dashboard Web3
 ![image](https://github.com/user-attachments/assets/c8323706-b905-4515-87f4-817a897e185c)
 ![image](https://github.com/user-attachments/assets/011ac371-f5a0-4b7d-a8d0-7a56fefcabf9)
+
 Gambar di atas menunjukkan tampilan dari Web3 Sensor Dashboard berbasis web yang terhubung dengan data dari smart contract di blockchain Ethereum yang menyajikan data dalam bentuk tabel, yang berisi informasi waktu (timestamp), ID sensor, lokasi (misalnya Mobil Tanki 1), tahap proses (Stage), serta nilai suhu dan kelembaban. Tampilan ini memudahkan pengguna untuk melihat log data sensor secara historis.
 
 ### Tampilan Data Explorer InfluxDB
 ![image](https://github.com/user-attachments/assets/bac6a5a2-894b-4409-89d7-afeb6ebef000)
+
 Gambar tersebut menunjukkan tampilan InfluxDB Data Explorer yang digunakan untuk melakukan query data sensor berbasis waktu. Dalam tampilan tersebut, user sedang menuliskan perintah untuk mengambil data dari bucket bernama "tugas3", menyaring data berdasarkan measurement "monitoring" dan field "temperature", serta menampilkan hasilnya. Grafik di bagian atas belum menampilkan visualisasi karena kemungkinan data belum tersedia dalam rentang waktu yang ditentukan. Antarmuka ini digunakan untuk menganalisis data suhu dan kelembaban yang dikirim oleh sensor secara real-time maupun historis.
 
  ### Tampilan Dashboard Grafana
 ![image](https://github.com/user-attachments/assets/a57c0bb7-c7cb-499a-97a6-baa47c504a58)
+
 Gambar tersebut menunjukkan tampilan Grafana Dashboard yang digunakan untuk memvisualisasikan data suhu dan kelembaban secara real-time. Pada panel grafik di bagian atas, terlihat dua garis data yang menunjukkan nilai suhu dan kelembaban yang stabil selama rentang waktu lima menit terakhir. Di bagian bawah terdapat editor query yang menggunakan untuk mengambil data dari bucket "tubes", dengan filter field "temperature" dan "humidity". Tampilan ini membantu pengguna memantau kondisi lingkungan secara langsung dan mudah dipahami dalam bentuk grafik.
 
 ### Tampilan PyQT
 ![image](https://github.com/user-attachments/assets/ade0dbe0-dd11-4741-a640-7b92470ea076)
+
 Gambar tersebut merupakan tampilan antarmuka GUI PyQt dari aplikasi monitoring sensor SHT20 yang terhubung ke InfluxDB. Aplikasi ini menampilkan data suhu dan kelembaban secara real-time di bagian atas dengan nilai numerik yang diperbarui terus-menerus. Di bawahnya terdapat dua grafik: Grafik Suhu dengan titik-titik merah dan Grafik Kelembaban dengan garis dan simbol biru, masing-masing menampilkan tren nilai selama beberapa detik terakhir.
 
 ### Terminal Output
 ![image](https://github.com/user-attachments/assets/b354dade-ec92-4d71-b005-cf596b20cb27)
+
 Gambar diatas merupakan tampilan dari Blockchain Container Purchase Dashboard, yaitu antarmuka berbasis web yang dirancang untuk mensimulasikan pemesanan kontainer berdasarkan kondisi lingkungan (suhu dan kelembaban) yang dicatat oleh sensor dan disimpan ke dalam blockchain. Pada dashboard terdapat form simulasi pemesanan, di mana pengguna dapat memasukkan nama, tanggal, jumlah container, serta suhu dan kelembaban yang diinginkan. Setelah tombol "Filter & Simulate Purchase" ditekan, sistem akan mencari data sensor dari blockchain yang sesuai dengan kriteria tersebut. Jika data cocok ditemukan, akan muncul QR Code simulasi pembayaran dan informasi jumlah total ETH yang harus dibayar sebagai bagian dari simulasi transaksi.
 
 ![image](https://github.com/user-attachments/assets/5d6d9f7a-fec1-4e3b-8d0d-5e1b6278868e)
+
 Gambar diatas menunjukkan tampilan tabel data sensor yang memuat timestamp, ID sensor, lokasi, tahap proses, suhu, dan kelembaban dari hasil pembacaan sensor. Seluruh data ini berasal dari event `DataStored` dalam smart contract Ethereum. Di bagian paling bawah, terdapat grafik suhu dan kelembaban yang divisualisasikan secara real-time, memudahkan pengguna memantau kondisi aktual dan mendeteksi perubahan yang signifikan seperti lonjakan suhu. Tampilan tersebut tidak hanya menyajikan informasi monitoring lingkungan secara transparan, tetapi juga mengilustrasikan integrasi antara data IoT dan sistem transaksi berbasis blockchain dalam konteks logistik dan pengiriman.
