@@ -1,0 +1,82 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f7fa;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin-top: 20px;
+  color: #2c3e50;
+}
+
+.form-container {
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 300px;
+}
+
+.form-container input,
+.form-container button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-container button {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#qrContainer {
+  margin-top: 20px;
+}
+
+#qrContainer img {
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.button-load button {
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+#sensorTable {
+  width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+#sensorTable th,
+#sensorTable td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+#sensorTable thead {
+  background-color: #007bff;
+  color: white;
+}
