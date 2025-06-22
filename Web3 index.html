@@ -1,0 +1,52 @@
+index.HTML
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>📦 Blockchain Container Purchase</title>
+  <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>📦 Blockchain Container Purchase Dashboard</h1>
+
+  <div class="form-container">
+    <h2>🧾 Simulasi Pemesanan</h2>
+    <input type="text" id="buyerName" placeholder="Nama Pembeli">
+    <input type="date" id="purchaseDate">
+    <input type="number" id="amount" placeholder="Jumlah Container" min="1">
+    <input type="number" step="0.01" id="desiredTemp" placeholder="Suhu yang Diinginkan (°C)">
+    <input type="number" step="0.01" id="desiredHum" placeholder="Kelembapan yang Diinginkan (%)">
+    <button onclick="simulatePurchase()">🛍 Filter & Simulate Purchase</button>
+  </div>
+
+  <div id="qrContainer" class="hidden">
+    <h3>💰 QR Code Simulasi Pembayaran</h3>
+    <img id="qrCode" src="assets/qris.jpeg" alt="QR Code Pembayaran">
+    <p>Total: <span id="ethTotal">0</span> ETH (simulasi)</p>
+  </div>
+
+  <div class="button-load">
+    <button onclick="loadSensorData()">🔄 Load Sensor Data</button>
+  </div>
+
+  <table id="sensorTable">
+    <thead>
+      <tr>
+        <th>Timestamp</th>
+        <th>Sensor ID</th>
+        <th>Location</th>
+        <th>Stage</th>
+        <th>Temperature (°C)</th>
+        <th>Humidity (%)</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <canvas id="chart" height="100"></canvas>
+  <script src="script.js"></script>
+</body>
+</html>
