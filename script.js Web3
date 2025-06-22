@@ -1,0 +1,108 @@
+const contractAddress = "0x478103fadea92c329018adc7f0912af637af69ac";
+const abiPath = "abi/SensorStorage.abi";
+const rpcURL = "http://127.0.0.1:8545";
+
+let chart;
+let cachedEvents = [];
+
+async function loadSensorData() {
+  const abiRes = await fetch(abiPath);
+  const abi = await abiRes.json();
+
+  const provider = new ethers.JsonRpcProvider(rpcURL);
+  const contract = new ethers.Contract(contractAddress, abi, provider);
+
+  const filter = contract.filters.DataStored();
+  const events = await contract.queryFilter(filter, 0, "latest");
+  cachedEvents = events;
+
+  const tableBody = document.querySelector("#sensorTable tbody");
+  tableBody.innerHTML = "";
+
+  const labels = [], temps = [], hums = [];
+
+  events.forEach((e) => {
+    const data = e.args;
+    const timeStr = new Date(Number(data.timestamp) * 1000).toLocaleString();
+    const temp = Number(data.temperature) / 100;
+    const hum = Number(data.humidity) / 100;
+
+    tableBody.innerHTML += `
+      <tr>
+        <td>${timeStr}</td>
+        <td>${data.sensorId}</td>
+        <td>${data.location}</td>
+        <td>${data.stage}</td>
+        <td>${temp.toFixed(2)}</td>
+        <td>${hum.toFixed(2)}</td>
+      </tr>
+    `;
+
+    labels.push(timeStr);
+    temps.push(temp);
+    hums.push(hum);
+  });
+
+  renderChart(labels, temps, hums);
+}
+
+function simulatePurchase() {
+  const name = document.getElementById("buyerName").value.trim();
+  const date = document.getElementById("purchaseDate").value;
+  const amount = parseInt(document.getElementById("amount").value);
+  const desiredTemp = parseFloat(document.getElementById("desiredTemp").value);
+  const desiredHum = parseFloat(document.getElementById("desiredHum").value);
+
+  if (!name || !date || !amount || isNaN(desiredTemp) || isNaN(desiredHum)) {
+    alert("Harap lengkapi semua field.");
+    return;
+  }
+
+  const tempTolerance = 0.1;
+  const humTolerance = 0.1;
+
+  const matchingData = cachedEvents.filter((e) => {
+    const temp = Number(e.args.temperature) / 100;
+    const hum = Number(e.args.humidity) / 100;
+    return (
+      Math.abs(temp - desiredTemp) <= tempTolerance &&
+      Math.abs(hum - desiredHum) <= humTolerance
+    );
+  });
+
+  if (matchingData.length < amount) {
+    alert(⚠ Data yang cocok hanya ditemukan sebanyak ${matchingData.length}.);
+    return;
+  }
+
+  const totalEth = amount * 1;
+  document.getElementById("ethTotal").innerText = totalEth;
+  document.getElementById("qrContainer").classList.remove("hidden");
+  alert(✅ Simulasi pembelian ${amount} container oleh ${name} pada ${date} berhasil!);
+}
+
+function renderChart(labels, temps, hums) {
+  const ctx = document.getElementById("chart").getContext("2d");
+  if (chart) chart.destroy();
+
+  chart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels,
+      datasets: [
+        {
+          label: "Temperature (°C)",
+          borderColor: "#e74c3c",
+          data: temps,
+          fill: false,
+        },
+        {
+          label: "Humidity (%)",
+          borderColor: "#3498db",
+          data: hums,
+          fill: false,
+        },
+      ],
+    },
+  });
+}
