@@ -94,7 +94,7 @@ Gambar tersebut menunjukkan tampilan Grafana Dashboard yang digunakan untuk memv
 
 Gambar tersebut merupakan tampilan antarmuka GUI PyQt dari aplikasi monitoring sensor SHT20 yang terhubung ke InfluxDB. Aplikasi ini menampilkan data suhu dan kelembaban secara real-time di bagian atas dengan nilai numerik yang diperbarui terus-menerus. Di bawahnya terdapat dua grafik: Grafik Suhu dengan titik-titik merah dan Grafik Kelembaban dengan garis dan simbol biru, masing-masing menampilkan tren nilai selama beberapa detik terakhir.
 
-### Terminal Output
+### Tampilan Blockchain Container Purchase Dashboard
 ![image](https://github.com/user-attachments/assets/b354dade-ec92-4d71-b005-cf596b20cb27)
 
 Gambar diatas merupakan tampilan dari Blockchain Container Purchase Dashboard, yaitu antarmuka berbasis web yang dirancang untuk mensimulasikan pemesanan kontainer berdasarkan kondisi lingkungan (suhu dan kelembaban) yang dicatat oleh sensor dan disimpan ke dalam blockchain. Pada dashboard terdapat form simulasi pemesanan, di mana pengguna dapat memasukkan nama, tanggal, jumlah container, serta suhu dan kelembaban yang diinginkan. Setelah tombol "Filter & Simulate Purchase" ditekan, sistem akan mencari data sensor dari blockchain yang sesuai dengan kriteria tersebut. Jika data cocok ditemukan, akan muncul QR Code simulasi pembayaran dan informasi jumlah total ETH yang harus dibayar sebagai bagian dari simulasi transaksi.
