@@ -9,6 +9,14 @@ Proyek ini mengintegrasikan sensor industri dengan sistem penyimpanan data time-
 
 Teknik Instrumentasi - Institut Teknologi Sepuluh Nopember
 
+## Fitur
+1. Sensor Monitoring: Pembacaan data suhu dan kelembaban secara berkala menggunakan sensor SHT20 berbasis Modbus RTU.
+2. TCP Transmission: Pengiriman data melalui jaringan TCP dari client ke server.
+3. InfluxDB Integration: Penyimpanan data time-series untuk query dan analisis historis.
+4. Blockchain Logging: Penyimpanan data sensor dalam blockchain Ethereum lokal menggunakan smart contract.
+5. Web3 Dashboard: Visualisasi data blockchain dalam bentuk tabel dan grafik, serta simulasi pemesanan container berbasis data suhu & kelembaban.
+6. Qt GUI Monitoring: Antarmuka desktop lokal menggunakan PyQt untuk monitoring dan histori data.
+
 ## 🛠️ Step by Step Eksekusi Sistem
 1. Jalankan Program Sensor
 ``` bash
