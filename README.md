@@ -99,6 +99,39 @@ Gambar tersebut merupakan tampilan antarmuka GUI PyQt dari aplikasi monitoring s
 
 Gambar diatas merupakan tampilan dari Blockchain Container Purchase Dashboard, yaitu antarmuka berbasis web yang dirancang untuk mensimulasikan pemesanan kontainer berdasarkan kondisi lingkungan (suhu dan kelembaban) yang dicatat oleh sensor dan disimpan ke dalam blockchain. Pada dashboard terdapat form simulasi pemesanan, di mana pengguna dapat memasukkan nama, tanggal, jumlah container, serta suhu dan kelembaban yang diinginkan. Setelah tombol "Filter & Simulate Purchase" ditekan, sistem akan mencari data sensor dari blockchain yang sesuai dengan kriteria tersebut. Jika data cocok ditemukan, akan muncul QR Code simulasi pembayaran dan informasi jumlah total ETH yang harus dibayar sebagai bagian dari simulasi transaksi.
 
+
 ![image](https://github.com/user-attachments/assets/5d6d9f7a-fec1-4e3b-8d0d-5e1b6278868e)
 
 Gambar diatas menunjukkan tampilan tabel data sensor yang memuat timestamp, ID sensor, lokasi, tahap proses, suhu, dan kelembaban dari hasil pembacaan sensor. Seluruh data ini berasal dari event `DataStored` dalam smart contract Ethereum. Di bagian paling bawah, terdapat grafik suhu dan kelembaban yang divisualisasikan secara real-time, memudahkan pengguna memantau kondisi aktual dan mendeteksi perubahan yang signifikan seperti lonjakan suhu. Tampilan tersebut tidak hanya menyajikan informasi monitoring lingkungan secara transparan, tetapi juga mengilustrasikan integrasi antara data IoT dan sistem transaksi berbasis blockchain dalam konteks logistik dan pengiriman.
+## Struktur Direktori Proyek
+```
+Tubes-ISI/
+├── sensor/                   # Program pembacaan data sensor (Rust)
+│   └── src/
+│       └── main.rs           # Program utama pembacaan sensor & pengiriman TCP
+│   └── Cargo.toml
+│
+├── Server/                   # TCP Server + Smart Contract (Rust)
+│   └── src/
+│       └── main.rs           # Deploy smart contract, terima data TCP, kirim ke Influx & Blockchain
+│   └── Cargo.toml
+│
+├── Web31/                    # Dashboard Web3 (HTML + JS)
+│   ├── index.html            # Antarmuka utama dashboard sensor
+│   ├── script.js             # Koneksi smart contract & blockchain
+│   └── style.css             # Styling halaman dashboard
+│
+├── gui.py                    # PyQt GUI untuk visualisasi lokal
+├── README.md                 # Dokumentasi proyek
+│
+├── docs/                     # Dokumentasi dan presentasi
+│   ├── Laporan_Akhir_Kelompok1.pdf
+│   └── Presentasi_Kelompok1.pptx
+│
+├── images/                   # Gambar hasil tampilan sistem
+│   ├── dashboard-web3.png
+│   ├── gui-monitor.png
+│   └── terminal-output.png
+│
+└── .gitignore
+```
